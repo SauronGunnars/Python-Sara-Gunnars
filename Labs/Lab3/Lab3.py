@@ -1,32 +1,43 @@
+from __future__ import annotations # importes so that I can use float|int as class attributes, recieved error without it
 import math #imports math lib 
 
-class Circle:
-    def __init__ (self, x, y, radius):
+class Positions: # created class Position to hold x and y values --> Int and float as class attributes
+    def __init__(self, x: float|int, y: float|int): 
         self._x = x
         self._y = y
-        self._radius = radius
-    @property
-    def area(self):
-        return (self._radius**2) * math.pi
-    
-    @property
-    def circumfence(self):
-        return (self._radius + self._radius) * math.pi
-
-class Rectangle:
-    def __init__(self, x, y, width, length):
-        self._x = x
-        self._y = y
-        self._width = width 
-        self._length = length 
 
     @property
-    def area(self):
-        return self._width*self._length
+    def x(self) -> float|int:
+        return self._x
+    
+    @x.setter
+    def x(self, value: float|int):
+        #raises TypeError if value is a str
+        if isinstance(value, str):
+            raise TypeError("Value cannot be a string")
+        self._x = value
     
     @property
-    def circumfence(self):
-        return (self._width*2) + (self._length*2)
+    def y(self) -> float|int:
+        return self._y
+    
+    @y.setter
+    def y(self, value: float|int):
+        if isinstance(value, str):
+            raise TypeError("Value cannot be a string")
+        self._y = value
+
+#  likhet ==
+    def __eq__(self, other): # dunder equal method to se if values are the same
+        return (self.x, self.y == other.x, other.y)
+# jämför < 
+    def __lt__ (self, other): # special method "less than"
+        return (self.x, self.y < other.x, other.y)
+# mindre eller lika <=
+    def __le__(self, other): # special method less than or equal to
+        return (self.x, self.y <= other.x, other.y)
+
+
 
 
 
