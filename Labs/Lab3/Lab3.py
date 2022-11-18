@@ -110,7 +110,7 @@ class Rectangle(Positions): # ärver från "föräldrar-klassen" Positions
         return self.width  == self.length
 
     # inside of the square - metod för att se om punkter befinner sig inom rektangeln
-    def inside_square(self): 
+    def inside_rectangle(self): 
         if self.x < self._width and self.y < self._length:
             return True
 
