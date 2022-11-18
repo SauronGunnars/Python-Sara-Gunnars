@@ -60,10 +60,10 @@ class Circle(Positions): # ärver från "föräldrar-klassen" Positions
     def circumfence(self):
         return (self._radius + self._radius) * math.pi
 
-    # __repr__ - returnerar sträng representation av ett object
+    # __repr__ - returnerar sträng representation av ett object - mer riktad till maskiner
     def __repr__(self) -> str:
         return f'Circle(x point: {self.x}, y point: {self.y} and radius: {self._radius})'
-    # __str__()
+    # __str__() # returnerar sträng representation av ett object, denna är dock mer riktad till människor
     def __str__(self) -> str:
         return f'Circle has x point: {self.x}, y point: {self.y} and radius: {self._radius}'
 
@@ -98,11 +98,11 @@ class Rectangle(Positions): # ärver från "föräldrar-klassen" Positions
         return (self._width*2) + (self._length*2)
         
 
-    # __repr__ - returnerar sträng representation av ett object
+    # __repr__ - returnerar sträng representation av ett object - mer riktad till maskiner
     def __repr__(self) -> str:
         return f'Rectangel(x point: {self.x}, y point: {self.y}, width: {self._width} and length: {self._length})'
 
-    # __str__() # dunder str som även  denna skriver ut texten nedan
+    # __str__() # returnerar sträng representation av ett object, denna är dock mer riktad till människor
     def __str__(self) -> str:
         return f'Rectangle has x point: {self.x}, y point: {self.y}, width: {self._width} and length: {self._length}'
 
