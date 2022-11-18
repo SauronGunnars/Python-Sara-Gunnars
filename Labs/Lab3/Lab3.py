@@ -11,7 +11,7 @@ class Positions:
     def x(self) -> float|int:
         return self._x
     
-    @x.setter
+    @x.setter #setter tillåter oss att tilldela värde åt x samt återge felmeddelande om ett icke numeriskt värde matas in
     def x(self, value: float|int):
         #raises TypeError if value is a str
         if isinstance(value, str):
@@ -22,35 +22,34 @@ class Positions:
     def y(self) -> float|int:
         return self._y
     
-    @y.setter
+    @y.setter #setter tillåter oss att tilldela värde åt y samt återge felmeddelande om ett icke numeriskt värde matas in
     def y(self, value: float|int):
         if isinstance(value, str):
             raise TypeError("Value cannot be a string")
         self._y = value
 
 #  likhet ==
-    def __eq__(self, other):
+    def __eq__(self, other): #dunder metod för att jämföra
         return (self.x, self.y) == (other.x, other.y)
 # jämför < 
-    def __lt__ (self, other): # special method "less than"
-        return (self.x, self.y )< (other.x, other.y)
+    def __lt__ (self, other): # special metod "less than"
+        return (self.x, self.y ) < (other.x, other.y)
 # mindre eller lika <=
-    def __le__(self, other): # special method less than or equal to
+    def __le__(self, other): # special metod "less than or equal to"
         return (self.x, self.y ) <= (other.x, other.y)
 
 # translationsmetod för att flytta x och y
-   # def move(self, x_move, y_move):
-        return (self.x, self.y) += (self.x_move, self.y_move) 
+    def __add__(self, new_x, new_y):
+        return (self.x, self.y) += (self.new_x, self.new_y)
 
 
 
 class Circle(Positions):
 
-    def __init__ (self, x, y, radius, x_distance, y_distance):
-        super().__init__(x, y, x_distance, y_distance) # super() function has the class inherent all the properties and methods from Positions
+    def __init__ (self, x, y, radius):
+        super().__init__(x, y) # super() ser till att "barn-klassen" ärver allt från föräldra klassen (Positions)
         self._radius = radius
-
-
+ 
     @property
     def area(self):
         return (self._radius**2) * math.pi
