@@ -2,6 +2,7 @@ import math #imports math lib
 from __future__ import annotations # importerar future annotations. Kunde inte tilldela "attributes Int|float till klasserna annars" 
 
 # I denna klass finns properties och metoder som är relevanta för både Circle och Rectangle klassen
+# Den kommer därmed att kallas på i de andra klasserna för att slippa återupprepa samma properties och metoder flera gånger
 class Positions:
     def __init__(self, x: float|int, y: float|int): 
         self._x = x
@@ -45,7 +46,7 @@ class Positions:
 
 
 # I denna klass finns properties och metoder specifika för circle klassen
-class Circle(Positions):
+class Circle(Positions): # ärver från "föräldrar-klassen" Positions
 
     def __init__ (self, x, y, radius):
         super().__init__(x, y) # super() ser till att "barn-klassen" ärver allt från föräldra klassen (Positions)
@@ -59,7 +60,7 @@ class Circle(Positions):
     def circumfence(self):
         return (self._radius + self._radius) * math.pi
 
-    # __repr__
+    # __repr__ - returnerar sträng representation av ett object
     def __repr__(self) -> str:
         return f'Circle(x point: {self.x}, y point: {self.y} and radius: {self._radius})'
     # __str__()
@@ -82,7 +83,7 @@ class Circle(Positions):
   
 
 # I denna klass finns properties och metoder specifika för rectangle klassen
-class Rectangle(Positions):
+class Rectangle(Positions): # ärver från "föräldrar-klassen" Positions
     def __init__(self, x, y, width, length):
         super().__init__(x, y)
         self._width = width 
@@ -97,7 +98,7 @@ class Rectangle(Positions):
         return (self._width*2) + (self._length*2)
         
 
-    # __repr__ - skapar en repr som skriver ut stringen nedan
+    # __repr__ - returnerar sträng representation av ett object
     def __repr__(self) -> str:
         return f'Rectangel(x point: {self.x}, y point: {self.y}, width: {self._width} and length: {self._length})'
 
