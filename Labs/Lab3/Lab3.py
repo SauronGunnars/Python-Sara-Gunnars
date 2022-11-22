@@ -1,5 +1,5 @@
-import math #imports math lib 
 from __future__ import annotations # importerar future annotations. Kunde inte tilldela "attributes Int|float till klasserna annars" 
+import math #imports math lib 
 
 # I denna klass finns properties och metoder som är relevanta för både Circle och Rectangle klassen
 # Den kommer därmed att kallas på i de andra klasserna för att slippa återupprepa samma properties och metoder flera gånger
@@ -40,9 +40,9 @@ class Positions:
     def __le__(self, other): # special metod "less than or equal to"
         return (self.x, self.y ) <= (other.x, other.y)
 
-# translationsmetod. Metoden skulle "flytta" på x och y genom att ge nya värden till x och y, fick dock inte denna att fungera.
-    def move(self, new_x, new_y):
-        return (self.x, self.y) = (self.new_x, self.new_y)
+# translationsmetod. Metoden flyttar på x och y genom att ge nya värden till x och y
+    def move(self):
+        (self.x, self.y) = (self.new_x, self.new_y)
 
 
 # I denna klass finns properties och metoder specifika för circle klassen
@@ -68,13 +68,14 @@ class Circle(Positions): # ärver från "föräldrar-klassen" Positions
         return f'Circle has x point: {self.x}, y point: {self.y} and radius: {self._radius}'
 
     #euclidean distance för att beräkna om punkter är innanför cirkeln
-    # fick inte denna att fungera....
-    def inside_circle(self, x_distance, y_distance) -> bool:
+    def inside_circle(self) -> bool:
         eucledian_distance = math.sqrt((self.x - self.x_distance)**2 + (self.y - self.y_distance)**2)
         if eucledian_distance < self.radius:
-            return True
-        return False
-
+            True
+        else:
+            False
+         
+#, x_distance, y_distance
     #Metod för enhetscirkeln. Returnerar sann om inmatade cirkeln har nedanstående värden
     def unit_circle(self):
         if self.x == 0 and self.y == 0 and self._radius == 1:
